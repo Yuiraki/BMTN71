@@ -1,0 +1,36 @@
+﻿@using startup.Models.products;
+@using startup.Utilities;
+
+@model List<ProductModel> ;
+
+<div class="products">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Our Products</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="our_products">
+                    <div class="row">
+                        @foreach(var i in Model)
+                        {
+                            <div class="col-md-4 margin_bottom1">
+                                <a asp-action="Details" asp-controller="ProductsView" asp-route-slug="@i.Slug">
+                                    <div class="product_box">
+                                        <figure><img src="@i.Image" height="70%" width="70%" alt="#" /></figure>
+                                        <h3>@i.Name</h3>
+                                        <h5 class="text-danger">@Functions.VNĐ(@i.Price)</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

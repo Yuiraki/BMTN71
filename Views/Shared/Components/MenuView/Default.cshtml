@@ -1,0 +1,80 @@
+﻿@using startup.Utilities
+@model IList<Menu>
+
+<header>
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                    <div class="full">
+                        <div class="center-desk">
+                            <div class="logo">
+                                <a href="~/client/index.html"><img src="~/client/images/logo.png" alt="#" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                    <nav class="navigation navbar navbar-expand-md navbar-dark">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarsExample04" aria-controls="navbarsExample04"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                            <ul class="navbar-nav mr-auto">
+
+                                @foreach (var item in Model)
+                                {
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="
+            @(item.MenuName == "Trang chủ" ? Url.Action("Index", "Home") :
+              item.MenuName == "Máy tính" ? "#maytinh" :
+              item.MenuName == "Bài viết" ? "#baiviet" :
+              item.Link)">
+                                            @item.MenuName
+                                        </a>
+                                    </li>
+                                }
+
+
+
+
+                               
+
+
+
+                                <li class="nav-item active">
+                                    @if (Functions._UserName != "")
+                                    {
+                                        <a asp-area="admin" asp-action="Logoutclient" asp-controller="LoginClient"
+                                           class="nav-link">Đăng xuất @Functions._UserName</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-area="admin" asp-action="index" asp-controller="LoginClient"
+                                           class="nav-link">Đăng nhập</a>
+                                    }
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="contact" asp-action="Index">
+                                        Liên hệ
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+                                      

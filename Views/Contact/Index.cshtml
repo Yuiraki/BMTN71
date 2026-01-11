@@ -1,0 +1,42 @@
+﻿@model startup.Models.Contact
+
+@{
+    ViewData["Title"] = "Liên hệ";
+}
+
+<h2>Liên hệ</h2>
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Success
+    </div>
+}
+
+<form asp-action="Index" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label>Họ và tên</label>
+        <input asp-for="FullName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Số điện thoại</label>
+        <input asp-for="Phone" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Nội dung</label>
+        <textarea asp-for="Message" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Gửi liên hệ
+    </button>
+</form>
